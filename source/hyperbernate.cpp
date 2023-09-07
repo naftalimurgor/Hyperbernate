@@ -1,3 +1,3 @@
 #include <hyperbernate/hyperbernate.h>
 
-using namespace greeter;
+using namespace Hyperbernate;
