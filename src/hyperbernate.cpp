@@ -52,11 +52,10 @@ LidStatus Hyperbernate::getLidStatus() {
 
 ACPISleepMode Hyperbernate::getACPIsleepMode() {
   std::string ACPIMode = get_file_contents(Hyperbernate::ACPI_MODE_PATH);
-  if (ACPIMode == "[s2idle] deep") {
+  if (ACPIMode == "[s2idle] deep")
     return Hyperbernate::ACPISleepMode::SLEEP;  // ['s2idle'] enabled in this case
-  } else if (ACPIMode == "[deep] s2idle") {
+  else if (ACPIMode == "[deep] s2idle")
     return Hyperbernate::ACPISleepMode::DEEP;  // ['deep'] enabled in this case
-  }
 }
 
 // From Gist: https://gist.github.com/arrieta/97438876b9db784beffb0de8d27f1dc9
