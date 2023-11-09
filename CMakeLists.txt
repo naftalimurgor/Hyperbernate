@@ -7,11 +7,15 @@ project(
   LANGUAGES CXX
 )
 
-# Define executable
-add_executable(Hyperbernate src/main.cpp)
+# sources
+file(GLOB SOURCES src/*.cpp)
+
+# Define executable with sources
+add_executable(Hyperbernate ${SOURCES})
 
 # Define header location paths
 target_include_directories(Hyperbernate PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src/include")
+
 
 # add imgui setup with opengl 
 # create a mainloop window
