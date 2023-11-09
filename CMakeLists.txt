@@ -11,5 +11,7 @@ project(
 add_executable(Hyperbernate src/main.cpp)
 
 # Define header location paths
-target_link_libraries(Hyperbernate PUBLIC src/include)
+target_include_directories(Hyperbernate PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src/include")
 
+# add imgui setup with opengl 
+# create a mainloop window
