@@ -14,7 +14,7 @@ bool Hyperbernate::hasSuspendToDiskSupport() {
 std::string Hyperbernate::toggleSuspendToDisk() {
   bool hasHibernateOn = isHyperbernateEnabled();
   std::string sleepMode = get_file_contents(Hyperbernate::ACPI_MODE_PATH);
-  if (hasHibernateOn) {
+  if (!hasHibernateOn) {
     // open the ACPI sleep mode file in append mode
     std::ofstream fileOUt(ACPI_MODE_PATH, std::ios::app);
     fileOUt << "deep" << std::endl;
