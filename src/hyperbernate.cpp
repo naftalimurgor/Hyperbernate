@@ -8,7 +8,8 @@ using namespace Hyperbernate;
 
 bool Hyperbernate::hasSuspendToDiskSupport() {
   std::filesystem::path acpi_sleep_path{Hyperbernate::ARCH_MEM_SLEEP_CONFIG_PATH};
-  std::filesystem::exists(acpi_sleep_path) ? true : false;
+  bool acpi_settings_exist = std::filesystem::exists(acpi_sleep_path);
+  return acpi_settings_exist;
 }
 
 std::string Hyperbernate::toggleSuspendToDisk() {
@@ -43,8 +44,10 @@ bool Hyperbernate::isHyperbernateEnabled() {
 
 LidStatus Hyperbernate::getLidStatus() {
   std::string laptopLidState = get_file_contents(Hyperbernate::LAPTOP_LID_STATE_PATH);
-  laptopLidState == "state:      open" ? Hyperbernate::LidStatus::OPEN
-                                       : Hyperbernate::LidStatus::CLOSED;
+  if (laptopLidState == "state:      open")
+    return Hyperbernate::LidStatus::OPEN;
+  else
+    return Hyperbernate::LidStatus::CLOSED;
 }
 
 ACPISleepMode Hyperbernate::getACPIsleepMode() {
