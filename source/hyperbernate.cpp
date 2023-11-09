@@ -1,18 +1,21 @@
 #include <hyperbernate/hyperbernate.h>
-#include<boost/filesystem.hpp>
+
+#include <filesystem>
 #include <string>
 
 using namespace Hyperbernate;
-using namespace boost::filesystem;
 
-bool Hyperbernate::hasSuspendToDiskSupport() const {
-  bool file_exist; = boost::filesystem::file_exists(Hyperbernate::ARCH_MEM_SLEEP_PATH);
-  return file_exists;
+bool Hyperbernate::hasSuspendToDiskSupport()
+{
+  std::filesystem::path acpi_sleep_path{Hyperbernate::ARCH_MEM_SLEEP_PATH};
+  std::filesystem::exists(acpi_sleep_path) ? true : false;
 }
 
-std::string Hyperbernate::toggleSuspendToDisk() const {
-    // write to disk
-    // alter the mem_sleep file
-    // listen for lid close events > 5 minutes
-    // toggle hibernate
+std::string Hyperbernate::toggleSuspendToDisk() 
+{
+  // write to disk
+  // alter the mem_sleep file
+  // listen for lid close events > 5 minutes
+  // toggle hibernate
+  std::filesystem::path acpi_sleep_path{Hyperbernate::ARCH_MEM_SLEEP_PATH};
 }
