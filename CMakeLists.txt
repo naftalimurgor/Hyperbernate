@@ -11,5 +11,5 @@ project(
 add_executable(Hyperbernate src/main.cpp)
 
 # Define header location paths
-target_link_libraries(Hyperbernate PUBLIC sr/include)
+target_link_libraries(Hyperbernate PUBLIC src/include)
 
