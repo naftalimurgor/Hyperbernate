@@ -33,9 +33,9 @@ std::string Hyperbernate::toggleSuspendToDisk() {
 bool Hyperbernate::isHyperbernateEnabled() {
   ACPISleepMode mode = getACPIsleepMode();
   switch (mode) {
-    case 0:
+    case Hyperbernate::SLEEP:
       return false;
-    case 1:
+    case Hyperbernate::DEEP:
       return true;
     default:
       break;
